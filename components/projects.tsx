@@ -10,8 +10,9 @@ const PROJECTS = [
     description: "IT company built with friends delivering modern web development, digital solutions, and tech infrastructure.",
     stack: ["Next.js", "TypeScript", "Tailwind CSS"],
     cta: "Visit Website",
-    href: "https://unifiedsolutions.tech",
+    href: "https://unifiedsolutions.com.np",
     badge: "Agency",
+    image: "/projects/project1.png",
   },
   {
     title: "Eternal Jewelry E-commerce",
@@ -19,8 +20,9 @@ const PROJECTS = [
     description: "High-converting online store designed for premium jewelry sales with custom UI and seamless checkout.",
     stack: ["Shopify / Web", "UI/UX", "Branding"],
     cta: "Visit Store",
-    href: "#",
+    href: "www.tryeternalrose.com",
     badge: "Client",
+    image: "/projects/project2.png",
   },
   {
     title: "High-Retention Video Editing",
@@ -28,22 +30,15 @@ const PROJECTS = [
     description: "Short-form clips, post-production, and engaging visual content created for social growth and storytelling.",
     stack: ["DaVinci Resolve", "CapCut", "Post-Production"],
     cta: "View Instagram Edits",
-    href: "https://www.instagram.com/_mamba_yz/",
+    href: "https://www.instagram.com/lifeofmamba_/",
     badge: "Creative",
   },
-]
-
-const TABS = [
-  { id: "all", label: "All Projects" },
-  { id: "agency", label: "Agency" },
-  { id: "client", label: "Client Work" },
-  { id: "creative", label: "Creative" },
 ]
 
 export function Projects() {
   const [activeTab, setActiveTab] = useState("all")
 
-  const visible = activeTab === "all" ? PROJECTS : PROJECTS.filter((p) => p.badge.toLowerCase() === activeTab)
+  const filtered = activeTab === "all" ? PROJECTS : PROJECTS.filter((p) => p.badge.toLowerCase() === activeTab)
 
   return (
     <section id="work" className="container mx-auto px-4 py-24">
@@ -55,26 +50,10 @@ export function Projects() {
         <p className="mt-2 max-w-2xl text-muted-foreground">
           A showcase of production systems, developer tooling, and experimental side projects.
         </p>
-
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
-          {TABS.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`rounded-full px-4 py-1.5 font-mono text-xs transition-all ${
-                activeTab === tab.id
-                  ? "bg-primary text-primary-foreground shadow-[0_0_12px_rgba(var(--primary-rgb),0.3)]"
-                  : "border border-border bg-card/50 text-muted-foreground hover:border-primary/50 hover:text-foreground"
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
       </div>
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {visible.map((p) => (
+        {filtered.map((p) => (
           <a
             key={p.title}
             href={p.href}
@@ -83,6 +62,15 @@ export function Projects() {
             className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-border bg-card/50 p-6 backdrop-blur-sm transition-all hover:-translate-y-1 hover:border-primary/50 hover:shadow-lg"
           >
             <div>
+              {p.image && (
+                <div className="mb-4 overflow-hidden rounded-xl border border-border/50 bg-background/50 aspect-video">
+                  <img
+                    src={p.image}
+                    alt={p.title}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+              )}
               <div className="flex items-center justify-between">
                 <span className="font-mono text-xs text-primary">{p.category}</span>
                 <span className="rounded-full border border-border px-2 py-0.5 font-mono text-[10px] text-muted-foreground">
