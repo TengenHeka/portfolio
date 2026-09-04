@@ -4,7 +4,7 @@ import { useState } from "react"
 
 const SOCIALS = [
   { logo: "/brands/github.svg", label: "GitHub (TengenHeka)", href: "https://github.com/TengenHeka" },
-  { logo: "/brands/instagram.svg", label: "Instagram (_mamba_yz)", href: "https://instagram.com/_mamba_yz" },
+  { logo: "/brands/instagram.svg", label: "Instagram", href: "https://instagram.com/_mamba_yz" },
   { logo: "/brands/linkedin.svg", label: "LinkedIn", href: "https://linkedin.com" },
   { logo: "/brands/youtube.svg", label: "YouTube", href: "#", isPending: true },
 ]
@@ -52,7 +52,7 @@ export function Contact() {
       </div>
 
       <div className="mx-auto grid max-w-5xl grid-cols-1 gap-12 lg:grid-cols-2">
-        <div className="flex flex-col justify-between space-y-6">
+        <div className="flex flex-col justify-start space-y-6">
           <div className="space-y-4">
             <h3 className="text-xl font-semibold">Connect Directly</h3>
             <p className="text-sm text-muted-foreground">
