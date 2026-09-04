@@ -1,142 +1,137 @@
-'use client'
+"use client"
 
-import { useState } from 'react'
-import { Send, Check } from 'lucide-react'
+import { useState } from "react"
 
 const SOCIALS = [
-  { logo: '/brands/github.svg', label: 'GitHub (TengenHeka)', href: 'https://github.com/TengenHeka' },
-  { logo: '/brands/instagram.svg', label: 'Instagram', href: '#' },
-  { logo: '/brands/linkedin.svg', label: 'LinkedIn', href: '#' },
-  { logo: '/brands/youtube.svg', label: 'YouTube', href: '#' },
-]
-
-const PROJECT_TYPES = [
-  'Web / Shopify Build',
-  'Video & Motion Editing',
-  'Cybersecurity / Scripting',
-  'SMMA / Digital Strategy',
-  'Something else',
+  { logo: "/brands/github.svg", label: "GitHub (TengenHeka)", href: "https://github.com/TengenHeka" },
+  { logo: "/brands/instagram.svg", label: "Instagram (_mamba_yz)", href: "https://www.instagram.com/_mamba_yz/" },
+  { logo: "/brands/linkedin.svg", label: "LinkedIn", href: "https://www.linkedin.com/in/yunish-gurung-ab83423b4/" },
+  { logo: "/brands/youtube.svg", label: "YouTube", href: "#", isPending: true },
 ]
 
 export function Contact() {
   const [sent, setSent] = useState(false)
 
   return (
-    <section id="contact" className="relative py-24">
-      <div
-        className="absolute left-1/2 top-0 -z-10 h-64 w-[36rem] -translate-x-1/2 rounded-full bg-primary/12 blur-[130px]"
-        aria-hidden="true"
-      />
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="grid gap-10 lg:grid-cols-2">
-          <div>
-            <p className="font-mono text-sm text-primary">// contact</p>
-            <h2 className="mt-3 text-balance text-4xl font-bold tracking-tight sm:text-5xl">
-              Let&apos;s Build Something
-            </h2>
-            <p className="mt-4 max-w-md leading-relaxed text-muted-foreground">
-              Got a project, a collaboration, or just want to talk shop about security, video, or
-              startups? Drop a message.
-            </p>
+    <section id="contact" className="container mx-auto px-4 py-24">
+      <div className="mb-12 flex flex-col items-center text-center">
+        <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3.5 py-1 font-mono text-xs font-medium text-primary shadow-[0_0_12px_rgba(var(--primary-rgb),0.2)]">
+          <span>// contact</span>
+        </div>
+        <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">Let's Build Something</h2>
+        <p className="mt-2 max-w-2xl text-muted-foreground">
+          Got a project, a collaboration, or just want to talk shop about security, video, or startups? Drop a message.
+        </p>
+      </div>
 
-            <div className="mt-8 flex flex-col gap-3">
-              {SOCIALS.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group glass flex items-center gap-3 rounded-xl border border-border px-4 py-3 text-sm transition-all hover:border-primary/50 hover:text-primary"
-                >
-                  <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-foreground/90 p-1.5">
-                    <img src={s.logo || '/placeholder.svg'} alt="" className="h-full w-full object-contain" />
-                  </span>
-                  <span>{s.label}</span>
-                </a>
-              ))}
-            </div>
+      <div className="mx-auto grid max-w-5xl grid-cols-1 gap-12 lg:grid-cols-2">
+        <div className="flex flex-col justify-between space-y-6">
+          <div className="space-y-4">
+            <h3 className="text-xl font-semibold">Connect Directly</h3>
+            <p className="text-sm text-muted-foreground">
+              Prefer direct links? Find me across these platforms or reach out through social channels.
+            </p>
           </div>
 
-          <form
-            onSubmit={(e) => {
-              e.preventDefault()
-              setSent(true)
-            }}
-            className="glass rounded-2xl border border-border p-6 sm:p-8"
-          >
-            <div className="grid gap-5">
-              <div className="grid gap-2">
-                <label htmlFor="name" className="text-sm font-medium">
-                  Name
-                </label>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {SOCIALS.map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target={social.isPending ? "_self" : "_blank"}
+                rel="noopener noreferrer"
+                onClick={(e) => {
+                  if (social.isPending) {
+                    e.preventDefault()
+                    alert("YT journey is yet to begin. 🎬")
+                  }
+                }}
+                className="flex items-center gap-3 rounded-xl border border-border bg-card p-4 transition-colors hover:border-primary/50"
+              >
+                <img src={social.logo} alt={social.label} className="h-5 w-5" />
+                <span className="font-mono text-sm">{social.label}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div className="glass rounded-2xl border border-border p-8">
+          {sent ? (
+            <div className="flex h-full min-h-[300px] flex-col items-center justify-center space-y-4 text-center">
+              <div className="rounded-full bg-primary/10 p-4 text-primary">
+                ✓
+              </div>
+              <h3 className="text-xl font-semibold">Message Sent!</h3>
+              <p className="text-sm text-muted-foreground">
+                Thanks for reaching out. I'll get back to you as soon as possible.
+              </p>
+              <button
+                onClick={() => setSent(false)}
+                className="mt-4 font-mono text-xs text-primary underline"
+              >
+                Send another message
+              </button>
+            </div>
+          ) : (
+            <form
+              action="https://api.web3forms.com/submit"
+              method="POST"
+              className="space-y-6"
+            >
+              <input type="hidden" name="access_key" value="347ec92e-4238-493d-bda1-c5f17fc20595" />
+
+              <div className="space-y-2">
+                <label className="font-mono text-xs text-muted-foreground">Name</label>
                 <input
-                  id="name"
-                  name="name"
                   required
+                  name="name"
+                  type="text"
                   placeholder="Your name"
-                  className="rounded-xl border border-border bg-input/40 px-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-primary/60"
+                  className="w-full rounded-lg border border-border bg-background/50 px-4 py-2.5 text-sm transition-colors focus:border-primary focus:outline-none"
                 />
               </div>
-              <div className="grid gap-2">
-                <label htmlFor="email" className="text-sm font-medium">
-                  Email
-                </label>
+
+              <div className="space-y-2">
+                <label className="font-mono text-xs text-muted-foreground">Email</label>
                 <input
-                  id="email"
+                  required
                   name="email"
                   type="email"
-                  required
                   placeholder="you@email.com"
-                  className="rounded-xl border border-border bg-input/40 px-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-primary/60"
+                  className="w-full rounded-lg border border-border bg-background/50 px-4 py-2.5 text-sm transition-colors focus:border-primary focus:outline-none"
                 />
               </div>
-              <div className="grid gap-2">
-                <label htmlFor="type" className="text-sm font-medium">
-                  Project Type
-                </label>
-                <select
-                  id="type"
-                  name="type"
-                  className="rounded-xl border border-border bg-input/40 px-4 py-3 text-sm text-foreground outline-none transition-colors focus:border-primary/60"
-                >
-                  {PROJECT_TYPES.map((t) => (
-                    <option key={t} value={t} className="bg-popover">
-                      {t}
-                    </option>
-                  ))}
+
+              <div className="space-y-2">
+                <label className="font-mono text-xs text-muted-foreground">Project Type</label>
+                <select name="project_type" className="w-full rounded-lg border border-border bg-background/50 px-4 py-2.5 text-sm transition-colors focus:border-primary focus:outline-none">
+                  <option>Web / Shopify Build</option>
+                  <option>Video & Motion Editing</option>
+                  <option>Cybersecurity / Scripting</option>
+                  <option>SMMA / Digital Strategy</option>
+                  <option>Something else</option>
                 </select>
               </div>
-              <div className="grid gap-2">
-                <label htmlFor="message" className="text-sm font-medium">
-                  Message
-                </label>
+
+              <div className="space-y-2">
+                <label className="font-mono text-xs text-muted-foreground">Message</label>
                 <textarea
-                  id="message"
-                  name="message"
                   required
+                  name="message"
                   rows={4}
                   placeholder="Tell me about it..."
-                  className="resize-none rounded-xl border border-border bg-input/40 px-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-primary/60"
-                />
+                  className="w-full rounded-lg border border-border bg-background/50 px-4 py-2.5 text-sm transition-colors focus:border-primary focus:outline-none"
+                ></textarea>
               </div>
 
               <button
                 type="submit"
-                disabled={sent}
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-primary to-accent px-6 py-3 text-sm font-semibold text-primary-foreground transition-all hover:glow-neon disabled:opacity-80"
+                className="w-full rounded-lg bg-primary py-3 font-mono text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
               >
-                {sent ? (
-                  <>
-                    <Check className="h-4 w-4" /> Message Sent
-                  </>
-                ) : (
-                  <>
-                    <Send className="h-4 w-4" /> Send Message
-                  </>
-                )}
+                Send Message
               </button>
-            </div>
-          </form>
+            </form>
+          )}
         </div>
       </div>
     </section>
@@ -146,10 +141,9 @@ export function Contact() {
 export function Footer() {
   return (
     <footer className="border-t border-border py-8">
-      <div className="mx-auto max-w-6xl px-4 text-center text-sm text-muted-foreground sm:px-6">
-        <p>
-          © 2026 Yunish Gurung (TengenHeka). Built with Next.js &amp; Tailwind CSS. Kathmandu,
-          Nepal.
+      <div className="container mx-auto px-4 text-center">
+        <p className="font-mono text-xs text-muted-foreground">
+          © {new Date().getFullYear()} Yunish Gurung (TengenHeka). Built with Next.js & Tailwind CSS. Kathmandu, Nepal.
         </p>
       </div>
     </footer>
