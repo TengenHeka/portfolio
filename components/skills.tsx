@@ -1,101 +1,72 @@
-import { ShieldHalf, Clapperboard, Handshake } from 'lucide-react'
+"use client"
 
-type Column = {
+import { Cpu, Film, Users } from "lucide-react"
+
+type SkillCategory = {
   title: string
-  icon: React.ComponentType<{ className?: string }>
-  skills: { name: string; level: number }[]
+  icon: typeof Cpu
+  skills: string[]
 }
 
-const COLUMNS: Column[] = [
+const SKILL_CATEGORIES: SkillCategory[] = [
   {
-    title: 'Tech & Security',
-    icon: ShieldHalf,
-    skills: [
-      { name: 'Web Development', level: 88 },
-      { name: 'HTML & CSS', level: 90 },
-      { name: 'Linux / Bash', level: 85 },
-      { name: 'Java', level: 80 },
-      { name: 'Python / Scripting', level: 75 },
-      { name: 'Git', level: 80 },
-    ],
+    title: "Tech & Security",
+    icon: Cpu,
+    skills: ["Next.js", "TypeScript", "Tailwind CSS", "Linux / Bash", "Python", "Java", "HTML & CSS", "Git"],
   },
   {
-    title: 'Creative & Post-Production',
-    icon: Clapperboard,
-    skills: [
-      { name: 'DaVinci Resolve', level: 90 },
-      { name: 'CapCut', level: 88 },
-      { name: 'Photoshop', level: 80 },
-      { name: 'Canva Pro', level: 85 },
-      { name: 'Content Clipping', level: 92 },
-    ],
+    title: "Creative & Post-Production",
+    icon: Film,
+    skills: ["DaVinci Resolve", "CapCut", "Photoshop", "Canva Pro", "Content Clipping", "Post-Production"],
   },
   {
-    title: 'Real-World & Leadership',
-    icon: Handshake,
-    skills: [
-      { name: 'Digital Marketing / SMMA', level: 84 },
-      { name: 'Certified Barista (1 yr)', level: 90 },
-      { name: 'Rotaract Leadership', level: 86 },
-      { name: 'Entrepreneurship', level: 82 },
-    ],
+    title: "Real-World & Leadership",
+    icon: Users,
+    skills: ["Digital Marketing / SMMA", "Certified Barista (1 yr)", "Rotaract Leadership", "Entrepreneurship"],
   },
 ]
 
 export function Skills() {
   return (
-    <section id="skills" className="relative py-24">
-      <div
-        className="absolute left-0 top-1/3 -z-10 h-64 w-64 rounded-full bg-accent/15 blur-[120px]"
-        aria-hidden="true"
-      />
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="max-w-2xl">
-          <p className="font-mono text-sm text-primary">// skill matrix</p>
-          <h2 className="mt-3 text-balance text-4xl font-bold tracking-tight sm:text-5xl">
-            Multidisciplinary by Design
-          </h2>
-          <p className="mt-4 leading-relaxed text-muted-foreground">
-            Technical depth in security and code, paired with a creative post-production toolkit and
-            real-world leadership experience.
-          </p>
+    <section id="skills" className="container mx-auto px-4 py-24">
+      <div className="mb-12 flex flex-col items-center text-center">
+        <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 font-mono text-xs font-medium text-primary">
+          <span>// skill matrix</span>
         </div>
+        <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">Multidisciplinary by Design</h2>
+        <p className="mt-2 max-w-2xl text-muted-foreground">
+          Technical depth in security and code, paired with a creative post-production toolkit and real-world leadership experience.
+        </p>
+      </div>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {COLUMNS.map((col) => {
-            const Icon = col.icon
-            return (
-              <div
-                key={col.title}
-                className="glass rounded-2xl border border-border p-6 transition-all hover:border-primary/40"
-              >
-                <div className="flex items-center gap-3">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent/15 text-accent">
-                    <Icon className="h-5 w-5" />
-                  </span>
-                  <h3 className="text-lg font-semibold">{col.title}</h3>
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+        {SKILL_CATEGORIES.map((cat) => {
+          const Icon = cat.icon
+          return (
+            <div
+              key={cat.title}
+              className="glass relative flex flex-col rounded-2xl border border-border p-6 transition-all duration-300 hover:border-primary/40"
+            >
+              <div className="mb-6 flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-primary/30 bg-primary/10 text-primary">
+                  <Icon className="h-5 w-5" />
                 </div>
-
-                <ul className="mt-6 space-y-4">
-                  {col.skills.map((s) => (
-                    <li key={s.name}>
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="text-foreground">{s.name}</span>
-                        <span className="font-mono text-xs text-muted-foreground">{s.level}%</span>
-                      </div>
-                      <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-secondary">
-                        <div
-                          className="h-full rounded-full bg-gradient-to-r from-primary to-accent"
-                          style={{ width: `${s.level}%` }}
-                        />
-                      </div>
-                    </li>
-                  ))}
-                </ul>
+                <h3 className="text-lg font-semibold">{cat.title}</h3>
               </div>
-            )
-          })}
-        </div>
+
+              <div className="flex flex-wrap gap-2">
+                {cat.skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="rounded-lg border border-primary/20 bg-primary/10 px-3 py-1.5 font-mono text-xs text-primary transition-colors hover:border-primary/50 hover:bg-primary/20"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )
+        })}
       </div>
     </section>
   )
