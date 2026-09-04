@@ -3,7 +3,7 @@
 import { useState } from "react"
 
 const SOCIALS = [
-  { logo: "/brands/github.svg", label: "GitHub(TengenHeka)", href: "https://github.com/TengenHeka" },
+  { logo: "/brands/github.svg", label: "GitHub (TengenHeka)", href: "https://github.com/TengenHeka" },
   { logo: "/brands/instagram.svg", label: "Instagram", href: "https://instagram.com/_mamba_yz" },
   { logo: "/brands/linkedin.svg", label: "LinkedIn", href: "https://np.linkedin.com/in/yunish-gurung-ab83423b4" },
   { logo: "/brands/youtube.svg", label: "YouTube", href: "#", isPending: true },
