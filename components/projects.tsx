@@ -36,15 +36,15 @@ const PROJECTS: Project[] = [
     cta: "Visit Store",
   },
   {
-    id: "video-editing-showcase",
-    title: "High-Retention Video Editing",
-    description: "Short-form clips, post-production, and engaging visual content created for social growth and storytelling.",
-    tag: "Video & Motion",
-    stack: ["DaVinci Resolve", "CapCut", "Post-Production"],
-    image: "/placeholder.jpg",
-    url: "https://www.instagram.com/lifeofmamba_/",
-    cta: "View Instagram Edits",
-  },
+  id: "video-editing-showcase",
+  title: "High-Retention Video Editing",
+  description: "Short-form clips, post-production, and engaging visual content created for social growth and storytelling.",
+  tag: "Video & Motion",
+  stack: ["DaVinci Resolve", "CapCut", "Post-Production"],
+  image: "",
+  url: "https://www.instagram.com/lifeofmamba_/",
+  cta: "View Instagram Edits",
+  }
 ]
 
 export function Projects() {
@@ -72,12 +72,16 @@ export function Projects() {
             rel="noopener noreferrer"
             className="group glass relative flex flex-col rounded-2xl border border-border p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:glow-neon"
           >
-            <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-border/60 bg-muted">
-              <img
-               src={p.image}
-               alt={p.title}
-              className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-          />
+           <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-border/60 bg-muted/40 flex items-center justify-center">
+              {p.image ? (
+                <img
+                src={p.image}
+                alt={p.title}
+                className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+          ) : (
+            <span className="font-mono text-xs text-muted-foreground/60">Content Preview Coming Soon</span>
+          )}
             </div>
 
             <div className="mt-5 flex items-start justify-between gap-3">
