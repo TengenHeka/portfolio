@@ -4,8 +4,8 @@ import { useState } from "react"
 
 const SOCIALS = [
   { logo: "/brands/github.svg", label: "GitHub (TengenHeka)", href: "https://github.com/TengenHeka" },
-  { logo: "/brands/instagram.svg", label: "Instagram (_mamba_yz)", href: "https://www.instagram.com/_mamba_yz/" },
-  { logo: "/brands/linkedin.svg", label: "LinkedIn", href: "https://www.linkedin.com/in/yunish-gurung-ab83423b4/" },
+  { logo: "/brands/instagram.svg", label: "Instagram (_mamba_yz)", href: "https://instagram.com/_mamba_yz" },
+  { logo: "/brands/linkedin.svg", label: "LinkedIn", href: "https://linkedin.com" },
   { logo: "/brands/youtube.svg", label: "YouTube", href: "#", isPending: true },
 ]
 
@@ -104,7 +104,10 @@ export function Contact() {
 
               <div className="space-y-2">
                 <label className="font-mono text-xs text-muted-foreground">Project Type</label>
-                <select name="project_type" className="w-full rounded-lg border border-border bg-background/50 px-4 py-2.5 text-sm transition-colors focus:border-primary focus:outline-none">
+                <select 
+                  name="project_type" 
+                  className="w-full rounded-lg border border-border bg-background/50 px-4 py-2.5 text-sm transition-colors focus:border-primary focus:outline-none"
+                >
                   <option>Web / Shopify Build</option>
                   <option>Video & Motion Editing</option>
                   <option>Cybersecurity / Scripting</option>
