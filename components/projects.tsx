@@ -9,96 +9,43 @@ type Project = {
   description: string
   tag: string
   stack: string[]
-  frame: "dashboard" | "terminal" | "cards"
+  image: string // <-- Change 'frame' to 'image' here
   url: string
-  githubUrl?: string
   cta: string
 }
 
 const PROJECTS: Project[] = [
   {
-    id: "nexus-analytics",
-    title: "Nexus Analytics Platform",
-    description: "Real-time infrastructure monitoring dashboard with predictive anomaly detection and custom alert pipelines.",
-    tag: "Featured",
-    stack: ["Next.js 14", "TypeScript", "Tailwind CSS", "Recharts"],
-    frame: "dashboard",
-    url: "https://example.com",
-    cta: "View Live Project",
+    id: "unified-solutions",
+    title: "Unified Solutions",
+    description: "IT company built with friends delivering modern web development, digital solutions, and tech infrastructure.",
+    tag: "IT & Web Agency",
+    stack: ["Next.js", "TypeScript", "Tailwind CSS"],
+    image: "/project1.png",
+    url: "https://unifiedsolutions.com.np",
+    cta: "Visit Website",
   },
   {
-    id: "synth-cli",
-    title: "Synth Developer CLI",
-    description: "Blazing-fast command line interface for automated environment provisioning and microservice orchestration.",
-    tag: "Open Source",
-    stack: ["Rust", "Tokio", "Clap", "Docker API"],
-    frame: "terminal",
-    url: "https://example.com",
-    cta: "Explore Repository",
+    id: "eternal-jewelry",
+    title: "Eternal Jewelry E-commerce",
+    description: "High-converting online store designed for premium jewelry sales with custom UI and seamless checkout.",
+    tag: "E-Commerce",
+    stack: ["Shopify / Web", "UI/UX", "Branding"],
+    image: "/project2.png",
+    url: "https://tryeternalrose.com",
+    cta: "Visit Store",
   },
   {
-    id: "aether-ui",
-    title: "Aether Component Library",
-    description: "Accessible, unstyled UI primitives designed for high-performance React applications with built-in dark mode.",
-    tag: "Design System",
-    stack: ["React", "Radix UI", "Tailwind", "Framer Motion"],
-    frame: "cards",
-    url: "https://example.com",
-    cta: "Read Documentation",
+    id: "video-editing-showcase",
+    title: "High-Retention Video Editing",
+    description: "Short-form clips, post-production, and engaging visual content created for social growth and storytelling.",
+    tag: "Video & Motion",
+    stack: ["DaVinci Resolve", "CapCut", "Post-Production"],
+    image: "/placeholder.jpg",
+    url: "https://www.instagram.com/lifeofmamba_/",
+    cta: "View Instagram Edits",
   },
 ]
-
-function FrameWireframe({ kind, url }: { kind: Project["frame"]; url: string }) {
-  return (
-    <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-border/60 bg-muted/30 p-3 shadow-inner">
-      <div className="flex items-center justify-between border-b border-border/40 pb-2">
-        <div className="flex gap-1.5">
-          <div className="h-2.5 w-2.5 rounded-full bg-red-500/80" />
-          <div className="h-2.5 w-2.5 rounded-full bg-yellow-500/80" />
-          <div className="h-2.5 w-2.5 rounded-full bg-green-500/80" />
-        </div>
-        <span className="truncate font-mono text-[10px] text-muted-foreground">{url}</span>
-      </div>
-
-      <div className="mt-3 flex h-[calc(100%-2rem)] items-center justify-center">
-        {kind === "dashboard" && (
-          <div className="grid w-full grid-cols-3 gap-2">
-            <div className="h-16 rounded-lg border border-border/50 bg-background/50 p-2">
-              <div className="h-2 w-12 rounded bg-primary/20" />
-              <div className="mt-2 h-4 w-8 rounded bg-primary/40" />
-            </div>
-            <div className="h-16 rounded-lg border border-border/50 bg-background/50 p-2">
-              <div className="h-2 w-12 rounded bg-primary/20" />
-              <div className="mt-2 h-4 w-10 rounded bg-primary/40" />
-            </div>
-            <div className="h-16 rounded-lg border border-border/50 bg-background/50 p-2">
-              <div className="h-2 w-12 rounded bg-primary/20" />
-              <div className="mt-2 h-4 w-6 rounded bg-primary/40" />
-            </div>
-          </div>
-        )}
-
-        {kind === "terminal" && (
-          <div className="w-full rounded-lg border border-border/50 bg-background/80 p-3 font-mono text-xs text-primary">
-            <div className="flex items-center gap-1 text-muted-foreground">
-              <Terminal className="h-3 w-3" />
-              <span>~ synth init my-app</span>
-            </div>
-            <div className="mt-1 text-emerald-400">✓ Initialized successfully</div>
-          </div>
-        )}
-
-        {kind === "cards" && (
-          <div className="flex gap-2">
-            <div className="h-12 w-16 rounded-md border border-primary/30 bg-primary/10" />
-            <div className="h-12 w-16 rounded-md border border-border/50 bg-background/50" />
-            <div className="h-12 w-16 rounded-md border border-border/50 bg-background/50" />
-          </div>
-        )}
-      </div>
-    </div>
-  )
-}
 
 export function Projects() {
   const [filter, setFilter] = useState<string>("all")
@@ -125,7 +72,13 @@ export function Projects() {
             rel="noopener noreferrer"
             className="group glass relative flex flex-col rounded-2xl border border-border p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:glow-neon"
           >
-            <FrameWireframe kind={p.frame} url={p.url} />
+            <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-border/60 bg-muted">
+              <img
+               src={p.image}
+               alt={p.title}
+              className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+          />
+            </div>
 
             <div className="mt-5 flex items-start justify-between gap-3">
               <h3 className="text-lg font-semibold text-balance leading-snug">{p.title}</h3>
