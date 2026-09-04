@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { ExternalLink, Github, Code2, Sparkles, Terminal } from "lucide-react"
+import { ExternalLink, Code2, Sparkles, Terminal } from "lucide-react"
 
 type Project = {
   id: string
