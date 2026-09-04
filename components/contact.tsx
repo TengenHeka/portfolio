@@ -11,6 +11,33 @@ const SOCIALS = [
 
 export function Contact() {
   const [sent, setSent] = useState(false)
+  const [loading, setLoading] = useState(false)
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setLoading(true)
+
+    const formData = new FormData(e.currentTarget)
+    formData.append("access_key", "347ec92e-4238-493d-bda1-c5f17fc20595")
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      })
+
+      const data = await response.json()
+      if (data.success) {
+        setSent(true)
+      } else {
+        alert("Something went wrong. Please try again.")
+      }
+    } catch (err) {
+      alert("Failed to send message.")
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
     <section id="contact" className="container mx-auto px-4 py-24">
@@ -73,13 +100,7 @@ export function Contact() {
               </button>
             </div>
           ) : (
-            <form
-              action="https://api.web3forms.com/submit"
-              method="POST"
-              className="space-y-6"
-            >
-              <input type="hidden" name="access_key" value="347ec92e-4238-493d-bda1-c5f17fc20595" />
-
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-2">
                 <label className="font-mono text-xs text-muted-foreground">Name</label>
                 <input
@@ -129,9 +150,10 @@ export function Contact() {
 
               <button
                 type="submit"
-                className="w-full rounded-lg bg-primary py-3 font-mono text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+                disabled={loading}
+                className="w-full rounded-lg bg-primary py-3 font-mono text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 disabled:opacity-50"
               >
-                Send Message
+                {loading ? "Sending..." : "Send Message"}
               </button>
             </form>
           )}
