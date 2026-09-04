@@ -57,7 +57,7 @@
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 12%);
   --ring: oklch(0.8 0.15 195);
-  --radius: 0.75rem;
+  --radius: 0.625rem;
 
   --neon: oklch(0.82 0.16 190);
   --purple: oklch(0.65 0.24 300);
@@ -78,19 +78,19 @@
 @layer utilities {
   .glass {
     background: color-mix(in oklch, var(--card) 55%, transparent);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
   .glow-neon {
     box-shadow: 0 0 0 1px color-mix(in oklch, var(--neon) 30%, transparent),
-      0 0 28px -6px color-mix(in oklch, var(--neon) 45%, transparent);
+      0 0 18px -7px color-mix(in oklch, var(--neon) 32%, transparent);
   }
   .glow-purple {
     box-shadow: 0 0 0 1px color-mix(in oklch, var(--purple) 35%, transparent),
-      0 0 34px -8px color-mix(in oklch, var(--purple) 50%, transparent);
+      0 0 22px -9px color-mix(in oklch, var(--purple) 35%, transparent);
   }
   .text-glow-neon {
-    text-shadow: 0 0 18px color-mix(in oklch, var(--neon) 55%, transparent);
+    text-shadow: 0 0 12px color-mix(in oklch, var(--neon) 38%, transparent);
   }
   .grid-bg {
     background-image: linear-gradient(

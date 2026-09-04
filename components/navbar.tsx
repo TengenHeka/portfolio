@@ -32,7 +32,7 @@ export function Navbar() {
     >
       <nav
         className={cn(
-          'mx-auto flex max-w-6xl items-center justify-between rounded-2xl px-4 py-3 transition-all duration-300 sm:px-6',
+          'mx-auto flex max-w-6xl items-center justify-between rounded-xl px-4 py-3 transition-all duration-300 sm:px-6',
           scrolled ? 'glass border border-border shadow-lg' : 'border border-transparent',
         )}
       >
@@ -81,7 +81,7 @@ export function Navbar() {
 
       {open && (
         <div className="mx-auto mt-2 max-w-6xl px-4 md:hidden">
-          <div className="glass flex flex-col gap-1 rounded-2xl border border-border p-3">
+          <div className="glass flex flex-col gap-1 rounded-xl border border-border p-3">
             {LINKS.map((l) => (
               <a
                 key={l.href}

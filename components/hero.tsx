@@ -111,11 +111,11 @@ export function Hero() {
     <section id="top" className="relative overflow-hidden pt-36 pb-20 sm:pt-44">
       <div className="grid-bg absolute inset-0 -z-10" aria-hidden="true" />
       <div
-        className="absolute -top-24 left-1/2 -z-10 h-72 w-72 -translate-x-1/2 rounded-full bg-primary/20 blur-[120px]"
+        className="absolute -top-24 left-1/2 -z-10 h-72 w-72 -translate-x-1/2 rounded-full bg-primary/10 blur-[100px]"
         aria-hidden="true"
       />
       <div
-        className="absolute right-0 top-40 -z-10 h-64 w-64 rounded-full bg-accent/20 blur-[120px]"
+        className="absolute right-0 top-40 -z-10 h-64 w-64 rounded-full bg-accent/10 blur-[100px]"
         aria-hidden="true"
       />
 
@@ -132,7 +132,7 @@ export function Hero() {
           <div className="mt-6 flex items-center gap-4">
             <span className="relative shrink-0">
               <span
-                className="absolute -inset-1 rounded-full bg-gradient-to-tr from-primary to-accent blur-md opacity-70"
+                className="absolute -inset-1 rounded-full bg-primary/30 blur-md opacity-60"
                 aria-hidden="true"
               />
               <img
@@ -158,7 +158,7 @@ export function Hero() {
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <a
               href="#work"
-              className="group inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-primary to-accent px-6 py-3 text-sm font-semibold text-primary-foreground transition-all hover:glow-neon"
+              className="group inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-all hover:glow-neon"
             >
               View Projects
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -179,7 +179,7 @@ export function Hero() {
         </div>
 
         <div className="animate-float">
-          <div className="glass overflow-hidden rounded-2xl border border-border glow-purple">
+          <div className="glass overflow-hidden rounded-xl border border-border glow-purple">
             <div className="flex items-center gap-2 border-b border-border bg-secondary/40 px-4 py-3">
               <span className="h-3 w-3 rounded-full bg-destructive/80" />
               <span className="h-3 w-3 rounded-full bg-primary/70" />

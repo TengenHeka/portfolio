@@ -82,7 +82,7 @@ export function Contact() {
           </div>
         </div>
 
-        <div className="glass rounded-2xl border border-border p-8">
+        <div className="glass rounded-xl border border-border p-8">
           {sent ? (
             <div className="flex h-full min-h-[300px] flex-col items-center justify-center space-y-4 text-center">
               <div className="rounded-full bg-primary/10 p-4 text-primary">

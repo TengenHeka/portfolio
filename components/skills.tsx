@@ -50,7 +50,7 @@ export function Skills() {
           return (
             <div
               key={cat.title}
-              className="glass relative flex flex-col rounded-2xl border border-border p-6 transition-all duration-300 hover:border-primary/40"
+              className="glass relative flex flex-col rounded-xl border border-border p-6 transition-all duration-300 hover:border-primary/40"
             >
               <div className="mb-6 flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-primary/30 bg-primary/10 text-primary">

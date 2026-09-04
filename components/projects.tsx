@@ -59,11 +59,11 @@ export function Projects() {
             href={p.href}
             target={p.href.startsWith("http") ? "_blank" : "_self"}
             rel="noopener noreferrer"
-            className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-border bg-card/50 p-6 backdrop-blur-sm transition-all hover:-translate-y-1 hover:border-primary/50 hover:shadow-lg"
+            className="group relative flex flex-col justify-between overflow-hidden rounded-xl border border-border bg-card/50 p-6 backdrop-blur-sm transition-all hover:-translate-y-1 hover:border-primary/50 hover:shadow-lg"
           >
             <div>
               {p.image && (
-                <div className="mb-4 overflow-hidden rounded-xl border border-border/50 bg-background/50 aspect-video">
+                <div className="mb-4 overflow-hidden rounded-lg border border-border/50 bg-background/50 aspect-video">
                   <img
                     src={p.image}
                     alt={p.title}

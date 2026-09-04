@@ -29,7 +29,7 @@ export function Ventures() {
             return (
               <div
                 key={item.title}
-                className="group glass flex items-start gap-4 rounded-2xl border border-border p-5 transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 hover:glow-purple"
+                className="group glass flex items-start gap-4 rounded-xl border border-border p-5 transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 hover:glow-purple"
               >
                 <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent/12 text-accent transition-colors group-hover:bg-accent/20">
                   <Icon className="h-6 w-6" />
