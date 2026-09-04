@@ -12,7 +12,7 @@ const PROJECTS = [
     cta: "Visit Website",
     href: "https://unifiedsolutions.com.np",
     badge: "Agency",
-    image: "/projects/project1.png",
+    image: "TengenHeka/portfolio/public/project1.png",
   },
   {
     title: "Eternal Jewelry E-commerce",
@@ -22,7 +22,7 @@ const PROJECTS = [
     cta: "Visit Store",
     href: "www.tryeternalrose.com",
     badge: "Client",
-    image: "/projects/project2.png",
+    image: "TengenHeka/portfolio/public/project2.png",
   },
   {
     title: "High-Retention Video Editing",
