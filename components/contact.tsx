@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 const SOCIALS = [
   { logo: "/brands/github.svg.png", label: "GitHub (TengenHeka)", href: "https://github.com/TengenHeka" },
@@ -164,8 +164,27 @@ export function Contact() {
 }
 
 export function Footer() {
+  const footerRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const footer = footerRef.current
+    const parent = footer?.parentElement
+
+    if (!footer || !parent) return
+
+    const observer = new MutationObserver(() => {
+      if (!footer.isConnected) {
+        parent.appendChild(footer)
+      }
+    })
+
+    observer.observe(parent, { childList: true })
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <footer className="border-t border-border py-8">
+    <footer ref={footerRef} className="border-t border-border py-8">
       <div className="container mx-auto px-4 text-center">
         <p className="font-mono text-xs text-muted-foreground">
           © {new Date().getFullYear()} Yunish Gurung (TengenHeka). Built with Next.js & Tailwind CSS. Kathmandu, Nepal.
