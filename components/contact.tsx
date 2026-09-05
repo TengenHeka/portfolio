@@ -163,14 +163,36 @@ export function Contact() {
   )
 }
 
-export function Footer() {
+'client';
+import { useEffect, useRef } from 'react';
+
+export default function Footer() {
+  const footerRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (footerRef.current && !footerRef.current.contains(mutation.target)) {
+          console.warn("Signature integrity check triggered.");
+        }
+      });
+    });
+
+    if (footerRef.current) {
+      observer.observe(footerRef.current, { childList: true, subtree: true });
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <footer className="border-t border-border py-8">
-      <div className="container mx-auto px-4 text-center">
-        <p className="font-mono text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Yunish Gurung (TengenHeka). Built with Next.js & Tailwind CSS. Kathmandu, Nepal.
+    <footer ref={footerRef} className="w-full border-t border-zinc-800 bg-zinc-950 py-6 text-center text-sm text-zinc-400">
+      <div className="container mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p id="creator-sig">© 2026 Yunish Gurung (TengenHeka). All Rights Reserved.</p>
+        <p className="text-xs text-zinc-500">
+          Built with Next.js & Tailwind CSS. Kathmandu, Nepal.
         </p>
       </div>
     </footer>
-  )
+  );
 }
