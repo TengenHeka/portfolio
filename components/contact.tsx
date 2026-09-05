@@ -1,6 +1,5 @@
 'use client';
-import { useEffect, useRef } from 'react';
-import { useState } from "react"
+import { useState, useEffect, useRef } from 'react';
 
 const SOCIALS = [
   { logo: "/brands/github.svg.png", label: "GitHub (TengenHeka)", href: "https://github.com/TengenHeka" },
