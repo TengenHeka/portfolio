@@ -1,5 +1,5 @@
-"use client"
-
+'use client';
+import { useEffect, useRef } from 'react';
 import { useState } from "react"
 
 const SOCIALS = [
