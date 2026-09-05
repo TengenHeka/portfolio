@@ -162,9 +162,6 @@ export function Contact() {
   )
 }
 
-'client';
-import { useEffect, useRef } from 'react';
-
 export default function Footer() {
   const footerRef = useRef<HTMLElement>(null);
 
